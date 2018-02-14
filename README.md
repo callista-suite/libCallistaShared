@@ -1,4 +1,4 @@
-#libcallistashared
+# libcallistashared
 
 This library provides the core UI framework behind all Callista Suite applications.
 
