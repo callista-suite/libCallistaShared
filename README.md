@@ -1,10 +1,10 @@
-#libsplashsuiteui
+#libcallistashared
 
-This library provides the core UI framework behind all SplashSuite applications.
+This library provides the core UI framework behind all Callista Suite applications.
 
 Any UI-related code that may be reusable among multiple applications should go here - for example, windowing code and layer management would go here, but a timeline for a video editor would *not*.
 
-This library is released under the MIT license, so feel free to take it apart and reuse it, although I doubt anyone will have much use for this outside of making SplashSuite applications :D
+This library is released under the MIT license, so feel free to take it apart and reuse it, although I doubt anyone will have much use for this outside of making Callista applications :D
 
 ## Technical info
 
