@@ -76,7 +76,9 @@
                 "${workspaceRoot}",
                 "${workspaceRoot}/include"
             ],
-            "defines": [],
+            "defines": [
+                "CS_CODE_EDITOR"
+            ],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [

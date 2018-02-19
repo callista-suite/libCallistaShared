@@ -18,18 +18,22 @@ inc = include_directories('include')
 
 thread_dep = dependency('threads')
 
-#gtk_dep=[]
-gtkmm_dep=[]
+gtk_dep=[]
+#gtkmm_dep=[]
 
 if host_machine.system() == 'linux'
-	#gtk_dep = dependency('gtk+-3.0')
-	gtkmm_dep = dependency('gtkmm-3.0')
+	gtk_dep = dependency('gtk+-3.0')
+	#gtkmm_dep = dependency('gtkmm-3.0')
 endif
 
-callista_lib = library('callistashared', sources, include_directories: inc)
+
+dependency_list = [gtk_dep, thread_dep]
+
+
+callista_lib = library('callistashared', sources, include_directories: inc, dependencies: dependency_list)
 
 callista_dep = declare_dependency(
   include_directories: inc,
-  dependencies: [gtkmm_dep, thread_dep],
+  dependencies: dependency_list,
   link_with: callista_lib
 )

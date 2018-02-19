@@ -1,25 +1,62 @@
 #pragma once
 
 #include <callista/build_info.hpp>
+#include <callista/types.hpp>
+#include <callista/ui/document_window.hpp>
+
+extern Dynarr<String> args;
+
+struct CallistaApp {
+	const char* package_id;
+	const char* friendly_name;
+	void (*setup_document_window_proc)(DocumentWindow *window);
+};
+
+int _callista_init();
+
+#if CS_OS_GTK
+	#include <callista/os/app_gtk.hpp>
+#endif
+
+
+// Below isn't really part of the public API.
+// It's not useful for an app developer, for the most part.
 
 #if CS_OS_WIN32
 
-#error "No Win32 code has been written for app startup yet. Perhaps you could contribute something?"
+	dynarr<string> _win32_get_cmdline();
+
+	#error "No Win32 code has been written for app startup yet. Perhaps you could contribute something?"
 
 #elif CS_OS_APPLE
 
-#error "No macOS app code has been written yet. Perhaps you could contribute something?"
+	#error "No macOS app code has been written yet. Perhaps you could contribute something?"
 
 #else
 
-#define CALLISTA_MAIN(init_proc) \
-	int main(int argc, char *argv[]) { \
-		_callista_init_pre(); \
-		init_proc(); \
-		return _callista_init_post(); \
-	}
+	#define CALLISTA_MAIN(setup_app_struct) \
+		int main(int argc, char *argv[]) { \
+			_nix_args(argc, argv); \
+			app_config = setup_app_struct(); \
+			return _callista_init(); \
+		}
 
 #endif
 
-void _callista_init_pre();
-int _callista_init_post();
+#if CS_OS_WIN32
+
+	// TODO(zachary): Red "ERROR:" prefix
+	#define console_error(...) printf(__VA_ARGS__)
+
+#else
+
+	#define console_error(...) do{ printf("\033[1;31mERROR: \033[0m"); printf(__VA_ARGS__); }while(0)
+
+	void _nix_args(int argc, char *argv[]);
+#endif
+
+extern CallistaApp app_config;
+
+#ifdef CALLISTA_INTERNAL
+	static void _post_init();
+#endif

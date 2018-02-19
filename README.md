@@ -1,6 +1,6 @@
 # libcallistashared
 
-This library provides the core UI framework behind all Callista Suite applications.
+This library provides the core UI framework and reusable code behind all Callista Suite applications.
 
 Any UI-related code that may be reusable among multiple applications should go here - for example, windowing code and layer management would go here, but a timeline for a video editor would *not*.
 

@@ -2,7 +2,10 @@
 
 
 #include <deque>
-template<typename T> using dynarr = std::deque<T>;
+template<typename T> using Dynarr = std::deque<T>;
+
+#include <string>
+using String = std::string;
 
 #include <stdint.h>
 
