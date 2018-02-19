@@ -22,8 +22,8 @@
 	#define CS_OS_DARWIN 1
 	#define CS_OS_APPLE 1
 	#define CS_OS_NIX 1
-	#include "TargetConditionals.h"
-	#if TARGET_IPHONE_SIMULATOR
+	#include <TargetConditionals.h>
+	#if TARGET_OS_SIMULATOR
 		#define CS_OS_IOS 1
 	#elif TARGET_OS_IPHONE
 		#define CS_OS_IOS 1
