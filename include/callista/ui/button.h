@@ -1,10 +1,10 @@
 #pragma once
 
-#include <callista/build_info.hpp>
-#include <callista/types.hpp>
-#include "icon.hpp"
+#include <callista/build_info.h>
+#include <callista/types.h>
+#include "icon.h"
 
-#include "gui_widget.hpp"
+#include "gui_widget.h"
 
 enum ButtonKind {
 	BUTTONKIND_LABEL_ICON,
@@ -30,7 +30,9 @@ struct Button {
 CS_LIB_PROC_C   Button *button_create            (ButtonKind kind);
 CS_LIB_PROC_C   void   _button_set_parent        (Button *button, GUI_Widget *parent); // We have to REALLY hope that a proper GUI widget is passed here.
 CS_LIB_PROC_C   void    button_set_label         (Button *button, char *label);
+#if CS_CPP
 CS_LIB_PROC_CPP void    button_set_label         (Button *button, String label);
+#endif
 CS_LIB_PROC_C   void    button_set_icon          (Button *button, Icon icon);
 CS_LIB_PROC_C   void    button_destroy           (Button *button);
 CS_LIB_PROC_C   void    button_register_callback (Button *button, void (*callback)());

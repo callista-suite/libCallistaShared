@@ -1,7 +1,7 @@
 
-#include <callista/app.hpp>
-#include <callista/document/document.hpp>
-#include <callista/document/designer_document.hpp>
+#include <callista/app.h>
+#include <callista/document/document.h>
+#include <callista/document/designer_document.h>
 
 
 

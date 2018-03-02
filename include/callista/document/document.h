@@ -1,6 +1,6 @@
 #pragma once
 
-#include <callista/types.hpp>
+#include <callista/types.h>
 
 enum DocumentType {
 	DOCTYPE_DESIGNER,
@@ -19,4 +19,4 @@ struct Document {
 	void *data;
 };
 
-void free_document(Document *document);
+CS_LIB_PROC_C void free_document(Document *document);

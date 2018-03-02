@@ -2,7 +2,7 @@
 #ifndef COMING_FROM_APP_CPP
 	// This file is only included by app.cpp
 	// This is just for editor error checking stuff :)
-	#include "app.cpp"
+	#include "app.c"
 #endif
 
 CallistaGtkData gtk_data;

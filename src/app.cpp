@@ -1,9 +1,9 @@
 
 #define CALLISTA_INTERNAL
 
-#include <callista/app.hpp>
-#include <callista/types.hpp>
-#include <callista/ui/document_window.hpp>
+#include <callista/app.h>
+#include <callista/types.h>
+#include <callista/ui/document_window.h>
 
 Dynarr<String> args;
 CallistaApp app_config;
@@ -61,14 +61,14 @@ int _callista_init() {
 	return _platform_init();
 }
 
-#define COMING_FROM_APP_CPP
+#define COMING_FROM_APP_CPP 1
 
 #if CS_OS_WIN32
 	#error "Unimplemented platform."
 #elif CS_OS_DARWIN
 	#error "Unimplemented platform."
 #elif CS_OS_GTK
-	#include "app_gtk_impl.hpp"
+	#include "app_gtk_impl.h"
 #else
 	#error "Unimplemented platform."
 #endif

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <callista/build_info.hpp>
-#include <callista/types.hpp>
-#include <callista/ui/document_window.hpp>
+#include <callista/build_info.h>
+#include <callista/types.h>
+#include <callista/ui/document_window.h>
 #include <stdio.h>
 
 extern Dynarr<String> args;
@@ -16,7 +16,7 @@ struct CallistaApp {
 CS_LIB_PROC_C int _callista_init();
 
 #if CS_OS_GTK
-	#include <callista/os/app_gtk.hpp>
+	#include <callista/os/app_gtk.h>
 #endif
 
 
@@ -58,6 +58,6 @@ CS_LIB_PROC_C int _callista_init();
 
 extern CallistaApp app_config;
 
-#ifdef CALLISTA_INTERNAL
+#if CS_INTERNAL
 	extern "C" CS_LIB_HIDE void _post_init();
 #endif

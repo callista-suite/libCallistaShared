@@ -1,6 +1,6 @@
 #pragma once
 
-#include <callista/types.hpp>
+#include <callista/types.h>
 
 #if CS_OS_GTK
 	#include <gtk/gtk.h>

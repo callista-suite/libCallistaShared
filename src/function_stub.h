@@ -5,7 +5,7 @@
 // and you don't get an assert!
 #include <type_traits>
 
-#include <callista/build_info.hpp>
+#include <callista/build_info.h>
 
 // Because the function signature may dictate any return type, we have to prevent errors or warnings
 // due to no return value at the end of the function. There's no standards-compliant way to do that,

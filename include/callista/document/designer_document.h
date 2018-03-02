@@ -1,6 +1,6 @@
 #pragma once
 
-#include <callista/document/document.hpp>
+#include <callista/document/document.h>
 
 struct DesignerDocument {
 

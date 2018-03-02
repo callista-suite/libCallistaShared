@@ -1,9 +1,21 @@
 #pragma once
 
-#include "detect_os.hpp"
+#include "detect_os.h"
 
 #define CS_VERSION   "0.0.1"
 #define CS_DEV_BUILD true
+
+#ifdef _CS__SHARED
+#define CS_INTERNAL 1
+#else
+#define CS_INTERNAL 0
+#endif
+
+#ifdef __cplusplus
+#define CS_CPP 1
+#else
+#define CS_CPP 0
+#endif
 
 
 // CS_LIB_PROC_C,
@@ -43,13 +55,13 @@
 		#define CS__BUILD_INFO__LIB_IMPORT /* not needed */
 	#endif
 
-	#ifdef CS_SHARED
+	#if CS_INTERNAL
 		#define CS__BUILD_INFO__LIB_VISIBILITY_PREFIX CS__BUILD_INFO__LIB_EXPORT
 	#else
 		#define CS__BUILD_INFO__LIB_VISIBILITY_PREFIX CS__BUILD_INFO__LIB_IMPORT
 	#endif
 
-	#ifdef __cplusplus
+	#if CS_CPP
 		#define CS_LIB_PROC_C extern "C" CS__BUILD_INFO__LIB_VISIBILITY_PREFIX
 	#else
 		#define CS_LIB_PROC_C CS__BUILD_INFO__LIB_VISIBILITY_PREFIX

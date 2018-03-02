@@ -1,12 +1,4 @@
 #pragma once
-
-
-#include <deque>
-template<typename T> using Dynarr = std::deque<T>;
-
-#include <string>
-using String = std::string;
-
 #include <stdint.h>
 
 // A whole buncha int types

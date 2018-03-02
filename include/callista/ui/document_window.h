@@ -1,9 +1,9 @@
 #pragma once
 
-#include <callista/build_info.hpp>
-#include <callista/types.hpp>
+#include <callista/build_info.h>
+#include <callista/types.h>
 
-#include "gui_widget.hpp"
+#include "gui_widget.h"
 
 struct Document;
 

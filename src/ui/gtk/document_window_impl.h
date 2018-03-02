@@ -1,9 +1,9 @@
 
 #include <gtk/gtk.h>
-#include <callista/ui/document_window.hpp>
-#include <callista/document/document.hpp>
-#include <callista/app.hpp>
-#include "../../function_stub.hpp"
+#include <callista/ui/document_window.h>
+#include <callista/document/document.h>
+#include <callista/app.h>
+#include "../../function_stub.h"
 
 #include <stdlib.h>
 
