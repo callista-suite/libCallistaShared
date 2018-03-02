@@ -3,6 +3,7 @@
 #include <callista/build_info.hpp>
 #include <callista/types.hpp>
 #include <callista/ui/document_window.hpp>
+#include <stdio.h>
 
 extern Dynarr<String> args;
 
@@ -12,7 +13,7 @@ struct CallistaApp {
 	void (*setup_document_window_proc)(DocumentWindow *window);
 };
 
-int _callista_init();
+CS_LIB_PROC_C int _callista_init();
 
 #if CS_OS_GTK
 	#include <callista/os/app_gtk.hpp>
@@ -24,7 +25,7 @@ int _callista_init();
 
 #if CS_OS_WIN32
 
-	dynarr<string> _win32_get_cmdline();
+	// dynarr<string> _win32_get_cmdline();
 
 	#error "No Win32 code has been written for app startup yet. Perhaps you could contribute something?"
 
@@ -52,11 +53,11 @@ int _callista_init();
 
 	#define console_error(...) do{ printf("\033[1;31mERROR: \033[0m"); printf(__VA_ARGS__); }while(0)
 
-	void _nix_args(int argc, char *argv[]);
+	CS_LIB_PROC_C void _nix_args(int argc, char *argv[]);
 #endif
 
 extern CallistaApp app_config;
 
 #ifdef CALLISTA_INTERNAL
-	static void _post_init();
+	extern "C" CS_LIB_HIDE void _post_init();
 #endif

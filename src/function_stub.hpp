@@ -7,11 +7,9 @@
 
 #include <callista/build_info.hpp>
 
-// Because the funciton signature may dictate any return type, we have to prevent errors or warnings
+// Because the function signature may dictate any return type, we have to prevent errors or warnings
 // due to no return value at the end of the function. There's no standards-compliant way to do that,
 // so I just have to get into brute-forced macro hell.
-
-#pragma GCC diagnostic ignored "-Wreturn-type"
 
 #if CS_COMPILER_GCC
 	#define CS__FSTUB_CLEARWARN   _Pragma("GCC diagnostic push"); _Pragma("GCC diagnostic ignored \"-Wreturn-type\"");

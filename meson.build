@@ -30,7 +30,7 @@ endif
 dependency_list = [gtk_dep, thread_dep]
 
 
-callista_lib = library('callistashared', sources, include_directories: inc, dependencies: dependency_list)
+callista_lib = library('callistashared', sources, include_directories: inc, dependencies: dependency_list, cpp_args : '-DCS_SHARED')
 
 callista_dep = declare_dependency(
   include_directories: inc,

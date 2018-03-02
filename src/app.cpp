@@ -33,7 +33,7 @@ CallistaApp app_config;
 	}
 #endif
 
-static int _platform_init();
+int _platform_init();
 
 // This is the "entry point" for Callista.
 // This is where we go from platform setup to actually
@@ -41,7 +41,7 @@ static int _platform_init();
 // 
 // We can NOT guarantee that this runs on the same thread as everything from
 // _callista_init and before.
-static void _post_init() {
+void _post_init() {
 
 	printf("Creating document window\n");
 	DocumentWindow *window = create_document_window();

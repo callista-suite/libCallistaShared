@@ -7,12 +7,12 @@
 
 CallistaGtkData gtk_data;
 
-static void _platform_activate(GtkApplication *app, gpointer user_data) {
+void _platform_activate(GtkApplication *app, gpointer user_data) {
 	gtk_data.app = app;
 	_post_init();
 }
 
-static int _platform_init() {
+int _platform_init() {
 	
 	GtkApplication *app;
 
@@ -20,8 +20,6 @@ static int _platform_init() {
 	g_signal_connect(app, "activate", G_CALLBACK(_platform_activate), NULL);
 
 	int status = g_application_run(G_APPLICATION(app), __gtk_argc, __gtk_argv);
-
-	printf("Gtk application finished running.\n");
 
 	g_object_unref(app);
 

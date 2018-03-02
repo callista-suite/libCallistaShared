@@ -26,16 +26,12 @@ static gboolean _gtk_window_close_event(GtkWidget *widget, GdkEvent *event, gpoi
 		}
 
 		free_document(document);
+
 	}
 
-	srand(time(0));
+	// Return false to close.
+	// Return true to keep alive.
 
-	int thing = rand() % 10;
-
-	printf("Close event. Picking a random number. %d\n", thing);
-
-	if(thing >= 5) return true;
-	
 	free_document_window((DocumentWindow *)document_window);
 
 	return false;
@@ -45,12 +41,13 @@ inline void free_document_window(DocumentWindow *window) {
 	free(window);
 }
 
-function_stub("`close_document_window` can not implemented for GTK.", void close_document_window(DocumentWindow *window));
-function_stub("`close_document_window` can not implemented for GTK.", bool close_document_window2(DocumentWindow *window));
+function_stub("`close_document_window` can not be implemented for GTK.", void close_document_window(DocumentWindow *window));
 
+/*
 static void window_test_callback(GtkWidget *widget, gpointer data) {
 	printf("Yo!\n");
 }
+*/
 
 DocumentWindow *create_document_window() {
 
@@ -59,24 +56,26 @@ DocumentWindow *create_document_window() {
 	DocumentWindow *window = new DocumentWindow;
 
 	// TODO(zachary): Is there a way to use GtkApplicationWindow here, and is that the right approach?
-	window->gtk_window = gtk_application_window_new(gtk_data.app);
+	window->backend.gtk_widget = gtk_application_window_new(gtk_data.app);
 
-	gtk_window_set_title(GTK_WINDOW(window->gtk_window), app_config.friendly_name);
+	gtk_window_set_title(GTK_WINDOW(window->backend.gtk_widget), app_config.friendly_name);
 
-	gtk_window_set_default_size(GTK_WINDOW(window->gtk_window), 800, 600);
+	gtk_window_set_default_size(GTK_WINDOW(window->backend.gtk_widget), 800, 600);
 
-
+/*
 	GtkWidget *button = gtk_button_new_with_label("Close me!");
 	g_signal_connect(button, "clicked", G_CALLBACK(window_test_callback), window);
-	gtk_container_add(GTK_CONTAINER(window->gtk_window), button);
+	gtk_container_add(GTK_CONTAINER(window->backend.gtk_widget), button);
+*/
 
-
-	gtk_widget_show_all(window->gtk_window);
+	gtk_widget_show_all(window->backend.gtk_widget);
 
 	// Do I need this?
-	// g_object_set_data(G_OBJECT(window->gtk_window), CS_DOCUMENT_WINDOW_KEY, window);
+	// g_object_set_data(G_OBJECT(window->backend.gtk_widget), CS_DOCUMENT_WINDOW_KEY, window);
 
-	g_signal_connect(window->gtk_window, "delete-event", G_CALLBACK(_gtk_window_close_event), window);
+	g_signal_connect(window->backend.gtk_widget, "delete-event", G_CALLBACK(_gtk_window_close_event), window);
+
+	app_config.setup_document_window_proc(window);
 
 	return window;
 
